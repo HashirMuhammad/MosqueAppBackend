@@ -85,7 +85,7 @@ app.post('/login', async (req, res) => {
     if (user && user.comparePassword(password)) {
       const token = jwt.sign({ userId: user._id, email }, 'your_secret_key', { expiresIn: '1h' });
 
-      res.json({ message: 'Login successful', role: user.role, token });
+      res.json({ message: 'Login successful', role: user.role, mosqueId: user.mosqueid, token });
     } else {
       res.status(401).json({ error: 'Invalid credentials' });
     }
